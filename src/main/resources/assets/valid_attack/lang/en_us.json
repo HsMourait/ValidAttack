@@ -1,0 +1,17 @@
+{
+  "valid_attack.configuration.title": "ValidAttack Configs",
+  "valid_attack.configuration.section.valid_attack.common.toml": "ValidAttack Configs",
+  "valid_attack.configuration.section.valid_attack.common.toml.title": "ValidAttack Configs",
+
+  "valid_attack.configuration.interceptClick": "Intercept Uncharged Clicks",
+  "valid_attack.configuration.interceptClick.tooltip": "Cancel attack clicks when the attack strength bar is not full.",
+
+  "valid_attack.configuration.autoAttackHold": "Auto-Attack on Hold",
+  "valid_attack.configuration.autoAttackHold.tooltip": "Auto-attack while holding down the attack key and the strength bar is full.",
+
+  "valid_attack.configuration.requireTarget": "Require Valid Target",
+  "valid_attack.configuration.requireTarget.tooltip": "Only attack when there is a valid living entity target (used by aim assist or crosshair).",
+
+  "valid_attack.configuration.aimAssist": "Simpler Attack Logic",
+  "valid_attack.configuration.aimAssist.tooltip": "Scan a 120° cone in front of the player and attack the nearest entity.\nWhen enabled together with 'Require Valid Target', the check covers the entire cone instead of only the crosshair line."
+}

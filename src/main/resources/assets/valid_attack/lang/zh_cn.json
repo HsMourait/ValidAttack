@@ -1,0 +1,17 @@
+{
+  "valid_attack.configuration.title": "ValidAttack 配置",
+  "valid_attack.configuration.section.valid_attack.common.toml": "ValidAttack 配置",
+  "valid_attack.configuration.section.valid_attack.common.toml.title": "ValidAttack 配置",
+
+  "valid_attack.configuration.interceptClick": "拦截不满蓄力的单击",
+  "valid_attack.configuration.interceptClick.tooltip": "当攻击蓄力条未满时，拦截这次攻击点击。",
+
+  "valid_attack.configuration.autoAttackHold": "按住时自动攻击",
+  "valid_attack.configuration.autoAttackHold.tooltip": "按住攻击键时，若蓄力条已满则自动持续攻击。",
+
+  "valid_attack.configuration.requireTarget": "有效性检查",
+  "valid_attack.configuration.requireTarget.tooltip": "仅在检测范围内有有效目标（生物/玩家）时才发起攻击。",
+
+  "valid_attack.configuration.aimAssist": "更简单的攻击逻辑",
+  "valid_attack.configuration.aimAssist.tooltip": "扫描玩家身前 120° 锥形区域，自动攻击最近的生物。\n与「有效性检查」同时开启时，检测范围为整个锥形区域，而非仅准星线。"
+}
