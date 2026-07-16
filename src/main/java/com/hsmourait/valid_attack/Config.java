@@ -5,17 +5,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-/**
- * Config for ValidAttack.
- * <p>
- * Five features are controlled here:
- * <ul>
- *   <li>interceptClick — cancel attacks when the strength bar is not full
- *   <li>autoAttackHold — repeatedly attack while holding the button
- *   <li>requireTarget — require a valid living entity target before attacking
- *   <li>aimAssist — scan a 120° cone in front of the player for targets
- * </ul>
- */
 @EventBusSubscriber(modid = ValidAttack.MODID)
 public class Config {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();

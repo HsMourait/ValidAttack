@@ -11,7 +11,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -19,23 +18,9 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.InputEvent;
 
-/**
- * 自动攻击的核心逻辑。四个功能都在这里实现。
- * <p>
- * 功能一 — 拦截不满蓄力的攻击键单击，抑制挥臂动画。
- * <p>
- * 功能二 — 按住攻击键自动攻击。
- * <p>
- * 功能三 — 有效性检查：攻击前确认范围内有可攻击目标。
- * <p>
- * 功能四 — 瞄准辅助：扫描身前 120° 锥形区域，不要求准星对准。
- */
+
 @EventBusSubscriber(modid = ValidAttack.MODID, value = Dist.CLIENT)
 public class AutoAttackHandler {
-
-    // ═══════════════════════════════════════
-    // 功能一：拦截不满蓄力的攻击键单击
-    // ═══════════════════════════════════════
 
     @SubscribeEvent
     public static void onInteractionKeyMappingTriggered(InputEvent.InteractionKeyMappingTriggered event) {
@@ -52,10 +37,6 @@ public class AutoAttackHandler {
             }
         }
     }
-
-    // ═══════════════════════════════════════
-    // 功能二、三、四：按住自动攻击 & 目标选择
-    // ═══════════════════════════════════════
 
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Pre event) {
@@ -103,10 +84,6 @@ public class AutoAttackHandler {
         }
         // target == null 且 requireTarget == OFF → 空挥
     }
-
-    // ═══════════════════════════════════════
-    // 辅助方法：120° 锥形扫描
-    // ═══════════════════════════════════════
 
     /**
      * 在玩家面前 120° 锥形区域内寻找距离最近的 {@link LivingEntity}。
