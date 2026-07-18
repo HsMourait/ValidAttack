@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -98,11 +99,15 @@ public class AutoAttackHandler {
         Vec3 lookVec = player.getLookAngle().normalize();
 
         // 1) 以 range 为半径构建包围盒，快速筛选候选实体
+        List<? extends String> blacklist = Config.AIM_ASSIST_BLACKLIST.get();
         AABB searchBox = player.getBoundingBox().inflate(range, range, range);
         Predicate<Entity> filter = e -> e instanceof LivingEntity living
                 && living.isAlive()
                 && living != player
-                && !living.isRemoved();
+                && !living.isRemoved()
+                && (blacklist.isEmpty()
+                    || !blacklist.contains(
+                        BuiltInRegistries.ENTITY_TYPE.getKey(living.getType()).toString()));
 
         List<LivingEntity> candidates = player.level().getEntitiesOfClass(
                 LivingEntity.class, searchBox,

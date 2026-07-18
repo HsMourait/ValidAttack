@@ -1,5 +1,7 @@
 package com.hsmourait.valid_attack;
 
+import java.util.List;
+
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -31,6 +33,14 @@ public class Config {
                      "instead of only the crosshair line.")
             .translation("valid_attack.configuration.aimAssist")
             .define("aimAssist", false);
+
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> AIM_ASSIST_BLACKLIST = BUILDER
+            .comment("Entity IDs that aim assist will ignore (e.g. minecraft:villager). " +
+                     "Use the entity's registry name, separated by spaces if multiple entries are needed.")
+            .translation("valid_attack.configuration.aimAssistBlacklist")
+            .defineList("aimAssistBlacklist", List.of("minecraft:villager", "minecraft:iron_golem"),
+                    () -> "",
+                    s -> s instanceof String);
 
     static final ModConfigSpec SPEC = BUILDER.build();
 

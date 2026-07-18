@@ -40,6 +40,13 @@ Simulates larger-range normal attacks found in some games.
 
 Scans for the nearest living target within a **120° cone area** in front of the player. No precise aiming is required; the module automatically selects the nearest target within the cone to attack. Its maximum check distance depends on the player's actual attack distance.
 
+### 5. Aim Assist Blacklist
+
+> Off by default
+
+Add entity registry IDs (e.g. `minecraft:villager`, `minecraft:iron_golem`) to the config, and aim assist will **skip** these entities and not auto-attack them.
+Useful for protecting villagers, your own pets, or other entities you don't want to accidentally hit.
+
 ---
 
 ## Configuration
@@ -57,3 +64,6 @@ requireTarget = false
 
 ### Aim Assist
 aimAssist = false
+
+### Aim Assist Blacklist (entity ID list)
+aimAssistBlacklist = ["minecraft:villager", "minecraft:iron_golem"]

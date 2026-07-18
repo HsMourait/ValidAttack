@@ -13,5 +13,8 @@
   "valid_attack.configuration.requireTarget.tooltip": "Only attack when there is a valid living entity target (used by aim assist or crosshair).",
 
   "valid_attack.configuration.aimAssist": "Simpler Attack Logic",
-  "valid_attack.configuration.aimAssist.tooltip": "Scan a 120° cone in front of the player and attack the nearest entity.\nWhen enabled together with 'Require Valid Target', the check covers the entire cone instead of only the crosshair line."
+  "valid_attack.configuration.aimAssist.tooltip": "Scan a 120° cone in front of the player and attack the nearest entity.\nWhen enabled together with 'Require Valid Target', the check covers the entire cone instead of only the crosshair line.",
+
+  "valid_attack.configuration.aimAssistBlacklist": "Aim Assist Blacklist",
+  "valid_attack.configuration.aimAssistBlacklist.tooltip": "Entity IDs that aim assist will ignore (e.g. minecraft:villager).\nUse the entity's registry name."
 }

@@ -34,6 +34,12 @@
 模拟了一些游戏中更大范围的普通攻击。
 在玩家面前 **120°的锥形区域**内扫描最近的活体目标。无需精确对准，模组会自动选择锥形范围内距离最近的目标发起攻击。其最大检查距离与玩家实际的攻击距离有关。
 
+### 5. 瞄准辅助黑名单
+> 默认关闭
+
+在配置中添加实体的注册 ID（例如 `minecraft:villager`、`minecraft:iron_golem`），瞄准辅助会**跳过**这些实体，不会自动攻击它们。
+可以用于保护村民、己方宠物等不想误伤的单位。
+
 ---
 
 ## 配置
@@ -51,3 +57,6 @@ requireTarget = false
 
 ### 更简单的逻辑
 aimAssist = false
+
+### 瞄准辅助黑名单（实体 ID 列表）
+aimAssistBlacklist = ["minecraft:villager", "minecraft:iron_golem"]
