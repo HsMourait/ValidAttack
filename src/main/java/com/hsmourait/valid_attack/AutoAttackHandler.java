@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -76,6 +77,9 @@ public class AutoAttackHandler {
             }
         }
 
+        // 黑名单检查 — 跳过黑名单中的实体类型
+        if (isBlacklisted(target)) return;
+
         // 如果找到了目标，发起攻击
         if (target != null && mc.gameMode != null) {
             player.resetAttackStrengthTicker();
@@ -102,7 +106,8 @@ public class AutoAttackHandler {
         Predicate<Entity> filter = e -> e instanceof LivingEntity living
                 && living.isAlive()
                 && living != player
-                && !living.isRemoved();
+                && !living.isRemoved()
+                && !isBlacklisted(e);
 
         List<LivingEntity> candidates = player.level().getEntitiesOfClass(
                 LivingEntity.class, searchBox,
@@ -127,4 +132,13 @@ public class AutoAttackHandler {
 
     /** 跨 tick 跟踪按键状态，用于判断"按住" vs "新按下"。 */
     private static boolean wasKeyDown = false;
+
+    /**
+     * 检查实体是否在黑名单中。通过实体类型的注册 ID（如 "minecraft:villager"）进行匹配。
+     */
+    private static boolean isBlacklisted(Entity entity) {
+        if (entity == null) return true;
+        String typeId = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString();
+        return Config.TARGET_BLACKLIST.get().contains(typeId);
+    }
 }

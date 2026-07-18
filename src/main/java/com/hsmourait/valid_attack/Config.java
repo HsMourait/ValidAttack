@@ -1,5 +1,7 @@
 package com.hsmourait.valid_attack;
 
+import java.util.List;
+
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -32,17 +34,22 @@ public class Config {
             .translation("valid_attack.configuration.aimAssist")
             .define("aimAssist", false);
 
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> TARGET_BLACKLIST = BUILDER
+            .comment("List of entity type IDs that will be ignored when auto-attacking (e.g. \"minecraft:villager\", \"minecraft:iron_golem\").")
+            .translation("valid_attack.configuration.targetBlacklist")
+            .defineListAllowEmpty("targetBlacklist", List.of(), () -> "", o -> o instanceof String);
+
     static final ModConfigSpec SPEC = BUILDER.build();
 
     @SubscribeEvent
     public static void onLoad(final ModConfigEvent.Loading configEvent) {
-        ValidAttack.LOGGER.info("Config loaded: interceptClick={}, autoAttackHold={}, requireTarget={}, aimAssist={}",
-                INTERCEPT_CLICK.get(), AUTO_ATTACK_HOLD.get(), REQUIRE_TARGET.get(), AIM_ASSIST.get());
+        ValidAttack.LOGGER.info("Config loaded: interceptClick={}, autoAttackHold={}, requireTarget={}, aimAssist={}, targetBlacklist={}",
+                INTERCEPT_CLICK.get(), AUTO_ATTACK_HOLD.get(), REQUIRE_TARGET.get(), AIM_ASSIST.get(), TARGET_BLACKLIST.get());
     }
 
     @SubscribeEvent
     public static void onFileChange(final ModConfigEvent.Reloading configEvent) {
-        ValidAttack.LOGGER.info("Config reloaded: interceptClick={}, autoAttackHold={}, requireTarget={}, aimAssist={}",
-                INTERCEPT_CLICK.get(), AUTO_ATTACK_HOLD.get(), REQUIRE_TARGET.get(), AIM_ASSIST.get());
+        ValidAttack.LOGGER.info("Config reloaded: interceptClick={}, autoAttackHold={}, requireTarget={}, aimAssist={}, targetBlacklist={}",
+                INTERCEPT_CLICK.get(), AUTO_ATTACK_HOLD.get(), REQUIRE_TARGET.get(), AIM_ASSIST.get(), TARGET_BLACKLIST.get());
     }
 }
